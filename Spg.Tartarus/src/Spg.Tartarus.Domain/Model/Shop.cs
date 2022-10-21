@@ -10,10 +10,9 @@ namespace Spg.Tartarus.Domain.Model
 {
     public class Shop
     {
-        public int Id { get; set; }
-        public string Name { get; set; } =string.Empty;
-        public IPAddress IpAddress { get; set; } = IPAddress.None;
         public UrlAttribute Url { get; set; } = default!; // wie null steht am anfang in der instanz
+        public string Name { get; set; } =string.Empty;
+        public IPAddress IpAddress { get; set; } = default!;
         public List<Review> Reviews { get; set; } = new();
         public List<Product> Products { get; set; } = new();
     }

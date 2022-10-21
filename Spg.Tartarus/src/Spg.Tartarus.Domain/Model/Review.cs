@@ -15,8 +15,10 @@ namespace Spg.Tartarus.Domain.Model
         public string Title { get; set; } = string.Empty;
         public int Stars { get; set; }
         public User WrittenByUser { get; set; } = default!; //wie null 
+        public Shop PostedShop { get; set; } = default!;
         public DateTime FirstWritten { get; set; }
         public Status State { get; set; }
+        public Product RelatedProduct { get; set; } = default!;
 
 
 

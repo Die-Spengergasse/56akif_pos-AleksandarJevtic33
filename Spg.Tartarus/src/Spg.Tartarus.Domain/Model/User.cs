@@ -16,7 +16,7 @@ namespace Spg.Tartarus.Domain.Model
         public string EMail { get; set; } = string.Empty; 
         public DateTime BirthDate { get; set; } //= DateTime.MinValue; optional
         public DateTime RegistrationDateTime { get; set; }
-        public List<Review> Reviews { get; set; } = default!; // oder new()???
+        public List<Review> Reviews { get; set; } = new();
       
 
     }
