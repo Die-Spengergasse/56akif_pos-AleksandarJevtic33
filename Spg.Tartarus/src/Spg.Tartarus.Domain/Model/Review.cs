@@ -11,16 +11,37 @@ namespace Spg.Tartarus.Domain.Model
     public enum Status { New, Old, Fake};
     public class Review
     {
-        public int Id { get; set; }
+        public int Id { get; private set;  }
         public string Title { get; set; } = string.Empty;
         public int Stars { get; set; }
+        public int WrittenByUserId { get; set; }
         public User WrittenByUser { get; set; } = default!; //wie null 
+        public int PostedShopId { get; set; }
         public Shop PostedShop { get; set; } = default!;
         public DateTime FirstWritten { get; set; }
         public Status State { get; set; }
         public Product RelatedProduct { get; set; } = default!;
 
+        //TODO Constructor
+        //TODO Backingfields
 
+        protected Review()
+        {
 
+        }
+
+        public Review(int id, string title, int stars, int writtenByUserId, User writtenByUser, int postedShopId, Shop postedShop, DateTime firstWritten, Status state, Product relatedProduct)
+        {
+            Id = id;
+            Title = title;
+            Stars = stars;
+            WrittenByUserId = writtenByUserId;
+            WrittenByUser = writtenByUser;
+            PostedShopId = postedShopId;
+            PostedShop = postedShop;
+            FirstWritten = firstWritten;
+            State = state;
+            RelatedProduct = relatedProduct;
+        }
     }
 }

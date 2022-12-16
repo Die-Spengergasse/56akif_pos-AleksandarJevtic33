@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.Tartarus.Domain", "src\Spg.Tartarus.Domain\Spg.Tartarus.Domain.csproj", "{D008F04A-51E7-4A10-902F-D8ED4FF589C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.Tartarus.Domain", "src\Spg.Tartarus.Domain\Spg.Tartarus.Domain.csproj", "{D008F04A-51E7-4A10-902F-D8ED4FF589C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.Tartarus.Infrastructure", "src\Spg.Tartarus.Infrastructure\Spg.Tartarus.Infrastructure.csproj", "{B6413BFE-F3AD-473F-9CD0-BF06D0666A3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.Tartarus.Repository", "src\Spg.Tartarus.Repository\Spg.Tartarus.Repository.csproj", "{861BCB27-06AD-4F0D-9041-E1D65E0A9A4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.Tartarus.MVCFrontend", "src\Spg.Tartarus.MVCFrontend\Spg.Tartarus.MVCFrontend.csproj", "{260F6063-A1C9-4F81-8EE7-B42A236499CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.Tartarus.Application", "src\Spg.Tartarus.Application\Spg.Tartarus.Application.csproj", "{A520CC0F-1238-4461-B49D-914636E23631}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.Tartarus.Domain.Test", "src\Spg.Tartarus.Domain.Test\Spg.Tartarus.Domain.Test.csproj", "{F3947438-5AB6-4498-B5BD-C5A2A01FFCFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{D008F04A-51E7-4A10-902F-D8ED4FF589C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D008F04A-51E7-4A10-902F-D8ED4FF589C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D008F04A-51E7-4A10-902F-D8ED4FF589C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6413BFE-F3AD-473F-9CD0-BF06D0666A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6413BFE-F3AD-473F-9CD0-BF06D0666A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6413BFE-F3AD-473F-9CD0-BF06D0666A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6413BFE-F3AD-473F-9CD0-BF06D0666A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861BCB27-06AD-4F0D-9041-E1D65E0A9A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861BCB27-06AD-4F0D-9041-E1D65E0A9A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861BCB27-06AD-4F0D-9041-E1D65E0A9A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861BCB27-06AD-4F0D-9041-E1D65E0A9A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260F6063-A1C9-4F81-8EE7-B42A236499CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260F6063-A1C9-4F81-8EE7-B42A236499CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260F6063-A1C9-4F81-8EE7-B42A236499CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260F6063-A1C9-4F81-8EE7-B42A236499CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A520CC0F-1238-4461-B49D-914636E23631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A520CC0F-1238-4461-B49D-914636E23631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A520CC0F-1238-4461-B49D-914636E23631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A520CC0F-1238-4461-B49D-914636E23631}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3947438-5AB6-4498-B5BD-C5A2A01FFCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3947438-5AB6-4498-B5BD-C5A2A01FFCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3947438-5AB6-4498-B5BD-C5A2A01FFCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3947438-5AB6-4498-B5BD-C5A2A01FFCFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
