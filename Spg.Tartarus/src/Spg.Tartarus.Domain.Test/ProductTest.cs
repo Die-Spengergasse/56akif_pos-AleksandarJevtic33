@@ -23,13 +23,21 @@ namespace Spg.Tartarus.Domain.Test
             return db;
 
         }
+
+        [Fact]
+        public void Seeddb()
+        {
+            TartarusContext db = GenerateDb();
+            db.Seed();
+            Assert.True(true);
+        }
         [Fact]
         public void Product_Add_OneEntity_SuccessTest()
         {
             // AAA
             // 1. Arange
             TartarusContext db = GenerateDb();
-            Product newProduct = new Product("Name", "Description", 200,2,1);
+            Product newProduct = new Product("Name", "Description", 200,null);
             // 2. Act
             db.Products.Add(newProduct);
             db.SaveChanges();

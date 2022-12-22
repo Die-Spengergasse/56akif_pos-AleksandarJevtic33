@@ -10,9 +10,9 @@ namespace Spg.Tartarus.Domain.Model
     {
         public int Id { get; private set;  }
         public string Name { get; set; } =string.Empty;
-        public int ProductId { get; set; }
-        public IReadOnlyList<Product> Products => _products;
-        public List<Product> _products = new();
+        //public int ProductId { get; set; }
+        public virtual IReadOnlyList<Product> Products => _products;
+        private List<Product> _products = new();
 
         //TODO Constructor
 
@@ -21,11 +21,10 @@ namespace Spg.Tartarus.Domain.Model
 
         }
 
-        public Category(int id, string name, int productId)
+        public Category(int id, string name)
         {
             Id = id;
             Name = name;
-            ProductId = productId;
         }
         //TODO Backingfields
 

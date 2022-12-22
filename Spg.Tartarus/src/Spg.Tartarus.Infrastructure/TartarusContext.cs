@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Spg.Tartarus.Domain.Model;
 using System;
@@ -37,10 +38,10 @@ namespace Spg.Tartarus.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // IST VIRTUAL deswegen Override
         {
             //Wenn schon eine Config dabei
-            if (!optionsBuilder.IsConfigured)
-            {
+            //if (!optionsBuilder.IsConfigured)
+            //{
                 optionsBuilder.UseSqlite("Data Source = Tartarus.db"); // Connection String von der Datenbank die ich nutzen will
-            }
+            //}
         }
         // 5. Optionen während DB Erstellung
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,6 +50,8 @@ namespace Spg.Tartarus.Infrastructure
             //var x = new Product("", "", new[], new List<Category>, 1).GetType().GetProperties();
             //string pName = x[1].Name;
             //modelBuilder.Entity<Product>().ToTable("Prodikte"); Wollen wir nicht ändern
+            //modelBuilder.Entity<Category>().HasKey(c => c.Id);
+            //modelBuilder.Entity<Category>().Property(c=> c.Id).IsRequired();
             modelBuilder.Entity<Product>().HasKey(p => p.Name);
             modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
             modelBuilder.Entity<Shop>().HasKey(s => s.Url);
@@ -58,7 +61,9 @@ namespace Spg.Tartarus.Infrastructure
 
             //Value Object:
             modelBuilder.Entity<Shop>().OwnsOne(s => s.Address);
-            modelBuilder.Entity<User>().OwnsOne(u => u.EMail);
+            modelBuilder.Entity<Product>().OwnsOne(p => p.CategoryNavigation);
+            
+            
             
         }
 
