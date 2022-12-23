@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Spg.Tartarus.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,27 +57,53 @@ namespace Spg.Tartarus.Infrastructure
             modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
             modelBuilder.Entity<Shop>().HasKey(s => s.Url);
             modelBuilder.Entity<Shop>().Property(s => s.Url).IsRequired();
+            modelBuilder.Entity<Address>().HasKey(a => a.Street);
+            modelBuilder.Entity<Address>().Property(a => a.Street).IsRequired();
+
 
             //modelBuilder.Entity<Product>().HasMany(p => p.Categories); // Nice aber unnötig Convention oder Configuration
 
             //Value Object:
-            modelBuilder.Entity<Shop>().OwnsOne(s => s.Address);
+            //modelBuilder.Entity<Shop>().OwnsOne(s => s.Address);
             modelBuilder.Entity<Product>().OwnsOne(p => p.CategoryNavigation);
-            
-            
-            
+            //modelBuilder.Entity<User>().OwnsMany(u => u.Reviews);
+            //modelBuilder.Entity<Review>().OwnsOne(r => r.WrittenByUser);
+            //modelBuilder.Entity<Review>().OwnsOne(r => r.RelatedProduct);
+            modelBuilder.Entity<Review>().OwnsOne(r => r.PostedShop);
+
+
+
+
+
         }
 
         public void Seed()
         {
 
-            //Randomizer.Seed() = new Random(12330201);
+            Randomizer.Seed = new Random(12330201);
+
+
+            List<Address> addresses = new Faker<Address>().CustomInstantiator(f =>
+            new Address
+                (
+                f.Address.StreetName(),
+                f.Address.BuildingNumber(),
+                f.Address.City(),
+                f.Address.ZipCode()
+                ))
+            .Generate(100)
+            .ToList();
+
+            Addresss.AddRange(addresses);
+            SaveChanges();
+
+            
 
             //TODO für Alle Entities SEEDS machen
             List<User> users = new Faker<User>().CustomInstantiator(f => //Instanzieren des Users mit Faker
             new User(f.Random.Int(11_111, 99_999),
                 f.Random.Enum<Genders>(), 
-                string.Empty,//f.Name.FirstName(),
+                f.Name.FirstName(),
                 f.Name.LastName(),
                 f.Internet.Email(),
                 f.Date.Between(DateTime.Now.AddYears(-60), DateTime.Now.AddYears(-16)),
@@ -92,17 +119,9 @@ namespace Spg.Tartarus.Infrastructure
                         c.FirtsName = f.Name.FirstName(Bogus.DataSets.Name.Gender.Female);
                     }
 
-                    /*
-                     * c.Address = new Address()
-                     * {
-                     * City = f.Address.City(),
-                     * Number = f.Address.BuildingNumber(),
-                     * Street = f.Address.StreetName(),
-                     * Zip = f.Address.ZipCode()
-                     * };
-                     * c.Phondenumber = f.Phone.PhoneNumber();
-                     * */
 
+                    c.Address = f.Random.ListItem(addresses);
+                    
                 })
                 .Generate(20)
                 .ToList();
@@ -110,18 +129,42 @@ namespace Spg.Tartarus.Infrastructure
             Users.AddRange(users);
             SaveChanges();
 
-            // TODO Association Beziehung erstellebn
-
             //List<Review> reviews = new Faker<Review>().CustomInstantiator(
-            //    f => 
+            //    f =>
             //    new Review(
-            //        //TODO
-            //        )).Rules( (f,r) =>
+            //        f.Random.Int(1, 2000),
+            //        f.Name.FullName(),
+            //        f.Random.Int(1, 5),
+            //        f.Date.Between(new DateTime(2000, 10, 10), new DateTime(2022, 10, 10)),
+            //        f.Random.Enum<Status>()
+            //        )).Rules((f, r) =>
             //        {
-            //            r.WrittenByUser = f.Random.ListItem<users>;
+            //            r.WrittenByUser = f.Random.ListItem(users);
+
             //        })
             //        .Generate(20)
             //        .ToList();
+            //Reviews.AddRange(reviews);
+            //SaveChanges();
+
+
+
+           
+
+
+
+            //List<Shop> shops = new Faker<Shop>().CustomInstantiator(
+            //    f => 
+            //    new Shop (
+            //        f.Internet.Url(),
+            //        f.Internet.DomainName(),
+            //        f.Name.FullName()
+                    
+            //        ))
+            //    .Rules((f, r) =>
+            //    {
+
+            //    })
         }
 
     }

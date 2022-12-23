@@ -31,10 +31,7 @@ namespace ExProperties
             }
         }
 
-        public int Flaeche
-        {
-            get { return Laenge * Breite; }
-        }
+        public int Flaeche => _laenge * _breite; //Arrow Fkt wie in JS, Lambda expression
         
     }
 }

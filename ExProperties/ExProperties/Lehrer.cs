@@ -8,32 +8,42 @@ namespace ExProperties
 {
     public class Lehrer
     {
-        private decimal? _bruttogehalt = null;
-        //private string? vorname;
-        //private string zuname;
+        //private string? _vorname;
+        //private string _zuname;
         //private string _kuerzel;
         public string Vorname { get; set; } = ""; // oder string.Empty
-        public string? Zuname { get; set;}
+        public string? Zuname { get; set; }
 
-    public decimal? Bruttogehalt { get { return _bruttogehalt; } 
+        public decimal? Bruttogehalt { get { return _bruttogehalt; }
             set
             {
-                if(_bruttogehalt == null)
+                if (_bruttogehalt != null)
                 {
-                     _bruttogehalt = value;  
+                    _bruttogehalt = value;
                 }
-            } 
+            }
         }
+        private decimal? _bruttogehalt = null; // mit _fields damit fields bei dot zusammengefasst
 
         public string Kuerzel
         {
-            get { return Zuname?.Substring(0, 3).ToUpper() ?? ""; } 
+            get 
+            {
+                if (Zuname?.Length < 3)
+                {
+                    //return Zuname?.Substring(0, 3)?.ToUpper() ?? "";  // oder auch string.Empty
+                    return Zuname?[..3]?.ToUpper() ?? ""; //der range parameter 
+                }
+                return "--";
+            }
         }
-
         public decimal Nettogehalt
         {
-            get { return _bruttogehalt*0.8M ?? 0; }
+            get { return _bruttogehalt * 0.8M ?? 0; }
         }
-
     }
 }
+
+        
+    
+

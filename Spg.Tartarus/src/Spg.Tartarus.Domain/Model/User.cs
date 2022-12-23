@@ -13,13 +13,14 @@ namespace Spg.Tartarus.Domain.Model
         public Genders Gender { get; set; }
         public string FirtsName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string EMail { get; set; } = string.Empty; 
+        public string? EMail { get; set; } = string.Empty;
+        public Address? Address { get; set; } = default!;
         public DateTime BirthDate { get; private set; } //= DateTime.MinValue; optional
         // Use Case fürs ändern des BirthDate
         public DateTime RegistrationDateTime { get; private set; }
         //public List<Review> Reviews { get; set; } = new(); //nicht mehr nötig weil liste aus review private
         private List<Review> _reviews = new();
-        public IReadOnlyList<Review> Reviews => _reviews;
+        public virtual IReadOnlyList<Review> Reviews => _reviews;
 
         //TODO Constructor DONE
         //TODO Backingfields DONE
@@ -42,6 +43,7 @@ namespace Spg.Tartarus.Domain.Model
             EMail = eMail;
             BirthDate = birthDate;
             RegistrationDateTime = registrationDateTime;
+            
             
         }
     }

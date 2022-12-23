@@ -14,7 +14,7 @@ namespace Spg.PluePos._01.Model
         {
             get 
             { 
-                if (Url == null)
+                if (Url == null) // oder Url is null der Inhalt wird verglichen mit == wird Speicheradresse verglichen
                 {
                     throw new ArgumentNullException("Url war NULL!");
                 }

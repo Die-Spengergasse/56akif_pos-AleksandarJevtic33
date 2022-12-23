@@ -37,7 +37,7 @@ namespace Spg.PluePos._01.Test
 
         //nochmal überarbeiten
 
-        public SmartPhoneApp SmartPhone = default!;
+        public SmartPhoneApp SmartPhone = default!; // oder new()
 
         public Post(string? title, DateTime created)
         {
@@ -49,11 +49,11 @@ namespace Spg.PluePos._01.Test
             Created = created;
         }
 
-        public Post(string? title) : this(title, DateTime.Now) { }
+        public Post(string? title) : this(title, DateTime.Now) { } // oder DateTime.UtcNow
 
         public override string ToString()
         {
-            return base.ToString() + Html;
+            return base.ToString() + Html; // ohne base.ToString()
         }
     }
 

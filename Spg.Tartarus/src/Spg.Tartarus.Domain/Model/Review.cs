@@ -14,9 +14,7 @@ namespace Spg.Tartarus.Domain.Model
         public int Id { get; private set;  }
         public string Title { get; set; } = string.Empty;
         public int Stars { get; set; }
-        public int WrittenByUserId { get; set; }
         public User WrittenByUser { get; set; } = default!; //wie null 
-        public int PostedShopId { get; set; }
         public Shop PostedShop { get; set; } = default!;
         public DateTime FirstWritten { get; set; }
         public Status State { get; set; }
@@ -30,18 +28,13 @@ namespace Spg.Tartarus.Domain.Model
 
         }
 
-        public Review(int id, string title, int stars, int writtenByUserId, User writtenByUser, int postedShopId, Shop postedShop, DateTime firstWritten, Status state, Product relatedProduct)
+        public Review(int id, string title, int stars, DateTime firstWritten, Status state)
         {
             Id = id;
             Title = title;
             Stars = stars;
-            WrittenByUserId = writtenByUserId;
-            WrittenByUser = writtenByUser;
-            PostedShopId = postedShopId;
-            PostedShop = postedShop;
             FirstWritten = firstWritten;
             State = state;
-            RelatedProduct = relatedProduct;
         }
     }
 }

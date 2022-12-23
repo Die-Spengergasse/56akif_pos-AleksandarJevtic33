@@ -11,7 +11,7 @@ namespace Spg.PluePos._01.Model
     public class TextPost : Post
     {
         public string? Content { get; set; } = string.Empty;
-        public int Length
+        public int Length  // => Content?.Length ?? 0 mit Lambda expression
         {
             get
             {
